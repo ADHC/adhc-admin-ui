@@ -3,7 +3,7 @@
   Plugin Name:  ADHC Admin UI
   Plugin URI:   http://adhc.lib.ua.edu
   Description:  UA Themed Admin interface. Includes ADHC How to documentions page and ADHC plugins repo.
-  Version:      1.7.1
+  Version:      1.7.2
   Author:       Tyler Grace
   Author URI:   http://adhc.lib.ua.edu
   */
@@ -40,7 +40,6 @@ function adhc_admin_theme_front_styles() {
 add_action( 'wp_enqueue_scripts', 'adhc_admin_theme_front_styles' );
 
 
-
 /* change admin footer */
 function adhc_swap_footer_admin() {
 	echo '<i class="ua-icon-denny-chimes"></i><img id="admin-ua-logo" src="https://alabama.box.com/shared/static/rrz800hrp7h5crt74rorawa8ihagu8eb.png" width="15%"><img id="admin-ua-lib-logo" style="" src="https://www.lib.ua.edu/wp-content/themes/roots-ualib/assets/img/new-ualib-logo.png" width="25%">';
@@ -59,7 +58,6 @@ function adhc_admin_bar_style() {
 	<?php }
 }
 add_theme_support( 'admin-bar', array( 'callback' => 'adhc_admin_bar_style' ) );
-
 
 
 function createMenu() {
@@ -84,13 +82,10 @@ function ua_logo_adminbar( $wp_admin_bar ) {
 add_action( 'admin_bar_menu', 'ua_logo_adminbar', 0 );
 
 
-
 function my_admin_scripts() {
     wp_enqueue_script( 'adhc-admin-js', plugin_dir_url( __FILE__ ) . '/js/adhc_admin.js', array( 'jquery' ), '1.0.0', true );
 }
 add_action( 'admin_enqueue_scripts', 'my_admin_scripts' );
-
-
 
 
 function remove_howdy( $wp_admin_bar ) {
@@ -104,8 +99,6 @@ function remove_howdy( $wp_admin_bar ) {
 add_filter( 'admin_bar_menu', 'remove_howdy',25 );
 
 
-
-
 /* enqueue adminbar styles */
 function adhc_admin_theme_propeller_accordion_styles() {
 	wp_enqueue_style('adhc-admin-propeller-accordion-style', plugin_dir_url( __FILE__ ) . '/inc/propeller-accordion/css/accordion.css');
@@ -117,16 +110,16 @@ function adhc_admin_theme_propeller_accordion_styles() {
 }
 //add_action( 'admin_enqueue_scripts', 'adhc_admin_theme_propeller_accordion_styles' );
 
+
 function adhc_admin_theme_propeller_accordion_scripts() {
     wp_enqueue_script( 'adhc-admin-propeller-accordion-js', plugin_dir_url( __FILE__ ) . '/inc/propeller-accordion/js/accordion.js', array( 'jquery' ), '1.0.0', true );
 }
 //add_action( 'admin_enqueue_scripts', 'adhc_admin_theme_propeller_accordion_scripts' );
 
 
+//ACF options page
 function my_acf_init() {
-
 	if( function_exists('acf_add_options_page') ) {
-
 		$option_page = acf_add_options_page(array(
 			'page_title' 	=> 'ADHC Page',
 			'menu_title' 	=> 'ADHC Page',
@@ -141,10 +134,7 @@ function my_acf_init() {
 			'parent_slug'	=> 'theme-general-settings',
 		));
 
-
-
 		if( function_exists('acf_add_local_field_group') ) {
-
 			acf_add_local_field_group(array (
 				'key' => 'group_5910c1e0030ff',
 				'title' => 'ADHC Page',
@@ -187,14 +177,9 @@ function my_acf_init() {
 				'active' => 1,
 				'description' => '',
 			));
-
-			}
-
+		}
 	}
-
 }
-
-//ACF options page
 //add_action('acf/init', 'my_acf_init');
 
 
@@ -238,19 +223,12 @@ function my_acf_update_value( $value, $post_id, $fields  ){
 
 
 
-
-
-
 /* -- HOW TO SECTION -- */
-
-add_action( 'admin_menu', 'adhc_setup_add_admin_menu' );
-add_action( 'admin_init', 'adhc_how_to_settings_init' );
-
-
 function adhc_setup_add_admin_menu(  ) {
 	add_options_page( 'ADHC Setup', 'ADHC Setup', 'manage_options', 'adhc_setup_plugin', 'adhc_how_to_options_page' );
 	add_menu_page( 'How To', 'How To', 'edit_posts', 'adhc/adhc-how-to-admin-page.php', 'adhc_how_to_admin_display_page', 'dashicons-info', 99 );
 }
+add_action( 'admin_menu', 'adhc_setup_add_admin_menu' );
 
 
 function adhc_how_to_admin_display_page(){
@@ -292,14 +270,12 @@ function adhc_how_to_admin_display_page(){
 
 function adhc_how_to_settings_init(  ) {
 	register_setting( 'pluginPage', 'adhc_how_to_settings' );
-
 	add_settings_section(
 		'adhc_how_to_pluginPage_section',
 		__( '', 'adhc_how_to' ),
 		'adhc_how_to_settings_section_callback',
 		'pluginPage'
 	);
-
 	add_settings_field(
 		'adhc_how_to_checkbox_field_wordpress_basics_doc',
 		__( 'Wordpress Basics Document', 'adhc_how_to' ),
@@ -307,7 +283,6 @@ function adhc_how_to_settings_init(  ) {
 		'pluginPage',
 		'adhc_how_to_pluginPage_section'
 	);
-
 	add_settings_field(
 		'adhc_how_to_checkbox_field_create_post_video',
 		__( 'How to Create a Post video', 'adhc_how_to' ),
@@ -315,7 +290,6 @@ function adhc_how_to_settings_init(  ) {
 		'pluginPage',
 		'adhc_how_to_pluginPage_section'
 	);
-
     add_settings_field(
 		'adhc_how_to_checkbox_field_timeline_entry_doc',
 		__( 'Timeline Entries in Wordpress', 'adhc_how_to' ),
@@ -323,8 +297,8 @@ function adhc_how_to_settings_init(  ) {
 		'pluginPage',
 		'adhc_how_to_pluginPage_section'
 	);
-
 }
+add_action( 'admin_init', 'adhc_how_to_settings_init' );
 
 
 function adhc_how_to_checkbox_field_wordpress_basics_doc_render(  ) {
@@ -422,90 +396,70 @@ function adhc_how_to_register_required_plugins() {
 			'slug'      => 'advanced-custom-fields-pro',
 			'source'    => 'https://alabama.box.com/v/advanced-custom-fields-pro',
 		),
-
 		array(
 			'name'      => 'ADHC Mybama Login',
 			'slug'      => 'adhc-mybama-login',
 			'source'    => 'https://alabama.box.com/v/adhc-mybama-login',
 		),
-
         array(
 			'name'      => 'ADHC TimelineJS Plugin',
 			'slug'      => 'adhc-timeline-js',
-			'source'    => 'https://alabama.box.com/v/adhc-timeline-js',
+            'required'  => false,
+			'source'    => 'https://github.com/ADHC/adhc-timeline-js/archive/master.zip',
 		),
-
 		array(
 			'name'        => 'Custom Post Type UI',
 			'slug'        => 'custom-post-type-ui',
 			'is_callable' => 'cptui_init',
 			'version'     => '1.5.3',
 		),
-
         array(
 			'name'        => 'ACF Columns',
 			'slug'        => 'acf-columns',
 			'is_callable' => 'cptui_init',
 			'version'     => '1.1.0',
 		),
-
         array(
 			'name'        => 'ManageWP Worker',
 			'slug'        => 'worker',
 			'is_callable' => 'cptui_init',
 			'version'     => '4.3.3',
 		),
-
         array(
 			'name'        => 'Adminimize',
 			'slug'        => 'adminimize',
 			'version'     => '1.11.4',
 		),
-
         array(
 			'name'        => 'Disable Comments',
 			'slug'        => 'disable-comments',
 			'version'     => '1.7.1',
 		),
-
-
         array(
 			'name'        => 'View Own Posts Media Only',
 			'slug'        => 'view-own-posts-media-only',
 			'version'     => '1.3',
 		),
-
         array(
 			'name'        => 'Duplicate Post',
 			'slug'        => 'duplicate-post',
 			'version'     => '3.2.1',
 		),
-
         array(
 			'name'        => 'Timber Library',
 			'slug'        => 'timber-library',
 			'version'     => '1.6',
 		),
-
         array(
 			'name'        => 'WPFront User Role Editor',
 			'slug'        => 'wpfront-user-role-editor',
 			'version'     => '2.14.1',
 		),
-
-
         array(
 			'name'        => 'User Switching',
 			'slug'        => 'user-switching',
 			'version'     => '1.3.0',
 		),
-
-
-user-switching
-
-
-
-
 	);
 
 	/*
@@ -532,97 +486,14 @@ user-switching
 			'page_title'                      => __( 'Install ADHC Plugins', 'adhc-setup-plugins' ),
 			'menu_title'                      => __( 'ADHC Plugins', 'adhc-setup-plugins' ),
 		),
-		/*
-		'strings'      => array(
-			'page_title'                      => __( 'Install Required Plugins', 'adhc-how-to' ),
-			'menu_title'                      => __( 'Install Plugins', 'adhc-how-to' ),
-			/* translators: %s: plugin name. * /
-			'installing'                      => __( 'Installing Plugin: %s', 'adhc-how-to' ),
-			/* translators: %s: plugin name. * /
-			'updating'                        => __( 'Updating Plugin: %s', 'adhc-how-to' ),
-			'oops'                            => __( 'Something went wrong with the plugin API.', 'adhc-how-to' ),
-			'notice_can_install_required'     => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'This theme requires the following plugin: %1$s.',
-				'This theme requires the following plugins: %1$s.',
-				'adhc-how-to'
-			),
-			'notice_can_install_recommended'  => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'This theme recommends the following plugin: %1$s.',
-				'This theme recommends the following plugins: %1$s.',
-				'adhc-how-to'
-			),
-			'notice_ask_to_update'            => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
-				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
-				'adhc-how-to'
-			),
-			'notice_ask_to_update_maybe'      => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'There is an update available for: %1$s.',
-				'There are updates available for the following plugins: %1$s.',
-				'adhc-how-to'
-			),
-			'notice_can_activate_required'    => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'The following required plugin is currently inactive: %1$s.',
-				'The following required plugins are currently inactive: %1$s.',
-				'adhc-how-to'
-			),
-			'notice_can_activate_recommended' => _n_noop(
-				/* translators: 1: plugin name(s). * /
-				'The following recommended plugin is currently inactive: %1$s.',
-				'The following recommended plugins are currently inactive: %1$s.',
-				'adhc-how-to'
-			),
-			'install_link'                    => _n_noop(
-				'Begin installing plugin',
-				'Begin installing plugins',
-				'adhc-how-to'
-			),
-			'update_link' 					  => _n_noop(
-				'Begin updating plugin',
-				'Begin updating plugins',
-				'adhc-how-to'
-			),
-			'activate_link'                   => _n_noop(
-				'Begin activating plugin',
-				'Begin activating plugins',
-				'adhc-how-to'
-			),
-			'return'                          => __( 'Return to Required Plugins Installer', 'adhc-how-to' ),
-			'plugin_activated'                => __( 'Plugin activated successfully.', 'adhc-how-to' ),
-			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'adhc-how-to' ),
-			/* translators: 1: plugin name. * /
-			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'adhc-how-to' ),
-			/* translators: 1: plugin name. * /
-			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'adhc-how-to' ),
-			/* translators: 1: dashboard link. * /
-			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'adhc-how-to' ),
-			'dismiss'                         => __( 'Dismiss this notice', 'adhc-how-to' ),
-			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'adhc-how-to' ),
-			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'adhc-how-to' ),
-
-			'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
-		),
-		*/
 	);
 
 	tgmpa( $plugins, $config );
 }
 
 
-
-//add_filter('acf/settings/load_json', 'my_acf_json_load_point');
-
 function my_acf_json_load_point( $paths ) {
-
-
-
 	if( function_exists('acf_add_options_page') ) {
-
 	    $option_page = acf_add_options_page(array(
 			'page_title' 	=> 'ADHC Setup Plugin',
 			'menu_title' 	=> 'ADHC Setup',
@@ -630,19 +501,9 @@ function my_acf_json_load_point( $paths ) {
 			'capability' 	=> 'manage_options',
 			'redirect' 	=> false
 		));
-
 	}
-
-
-    // remove original path (optional)
-    unset($paths[0]);
-
-
-    // append path
-    $paths[] = dirname( __FILE__ ) . '/acf';
-
-
-    // return
+    unset($paths[0]); // remove original path (optional)
+    $paths[] = dirname( __FILE__ ) . '/acf'; // append path
     return $paths;
-
 }
+//add_filter('acf/settings/load_json', 'my_acf_json_load_point');
