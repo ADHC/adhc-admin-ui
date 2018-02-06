@@ -3,7 +3,7 @@
   Plugin Name:  ADHC Admin UI
   Plugin URI:   http://adhc.lib.ua.edu
   Description:  UA Themed Admin interface. Includes ADHC How to documentions page and ADHC plugins repo.
-  Version:      1.6.1
+  Version:      1.7.1
   Author:       Tyler Grace
   Author URI:   http://adhc.lib.ua.edu
   */
@@ -482,13 +482,13 @@ function adhc_how_to_register_required_plugins() {
 		),
 
         array(
-			'name'        => 'Duplicate Post',
+			'name'        => 'Timber Library',
 			'slug'        => 'timber-library',
 			'version'     => '1.6',
 		),
 
         array(
-			'name'        => 'Duplicate Post',
+			'name'        => 'WPFront User Role Editor',
 			'slug'        => 'wpfront-user-role-editor',
 			'version'     => '2.14.1',
 		),
