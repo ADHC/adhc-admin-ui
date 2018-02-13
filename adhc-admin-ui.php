@@ -460,6 +460,24 @@ function adhc_how_to_register_required_plugins() {
 			'slug'        => 'user-switching',
 			'version'     => '1.3.0',
 		),
+
+        array(
+			'name'        => 'Display Posts Shortcode',
+			'slug'        => 'display-posts-shortcode',
+			'version'     => '2.9.0',
+		),
+
+        array(
+			'name'        => 'Redirection',
+			'slug'        => 'redirection',
+			'version'     => '3.2.0',
+		),
+
+        array(
+			'name'        => 'Simple Custom CSS and JS',
+			'slug'        => 'custom-css-js',
+			'version'     => '3.14.0',
+		),
 	);
 
 	/*
