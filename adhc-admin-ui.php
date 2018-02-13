@@ -3,7 +3,7 @@
   Plugin Name:  ADHC Admin UI
   Plugin URI:   http://adhc.lib.ua.edu
   Description:  UA Themed Admin interface. Includes ADHC How to documentions page and ADHC plugins repo.
-  Version:      1.7.2
+  Version:      1.7.3
   Author:       Tyler Grace
   Author URI:   http://adhc.lib.ua.edu
   */
