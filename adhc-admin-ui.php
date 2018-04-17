@@ -401,10 +401,10 @@ function adhc_how_to_register_required_plugins() {
 			'slug'      => 'adhc-mybama-login',
 			'source'    => 'https://alabama.box.com/v/adhc-mybama-login',
 		),
-        array(
+        	array(
 			'name'      => 'ADHC TimelineJS Plugin',
 			'slug'      => 'adhc-timeline-js',
-            'required'  => false,
+            		'required'  => false,
 			'source'    => 'https://github.com/ADHC/adhc-timeline-js/archive/master.zip',
 		),
 		array(
@@ -413,67 +413,64 @@ function adhc_how_to_register_required_plugins() {
 			'is_callable' => 'cptui_init',
 			'version'     => '1.5.3',
 		),
-        array(
-			'name'        => 'ACF Columns',
-			'slug'        => 'acf-columns',
-			'is_callable' => 'cptui_init',
-			'version'     => '1.1.0',
+        	array(
+			'name'        => 'Child Theme Configurator',
+			'slug'        => 'child-theme-configurator',
+			'version'     => '2.2.9',
 		),
-        array(
+        	array(
 			'name'        => 'ManageWP Worker',
 			'slug'        => 'worker',
 			'is_callable' => 'cptui_init',
 			'version'     => '4.3.3',
 		),
-        array(
+        	array(
 			'name'        => 'Adminimize',
 			'slug'        => 'adminimize',
 			'version'     => '1.11.4',
 		),
-        array(
+        	array(
 			'name'        => 'Disable Comments',
 			'slug'        => 'disable-comments',
 			'version'     => '1.7.1',
 		),
-        array(
+        	array(
 			'name'        => 'View Own Posts Media Only',
 			'slug'        => 'view-own-posts-media-only',
 			'version'     => '1.3',
 		),
-        array(
+        	array(
 			'name'        => 'Duplicate Post',
 			'slug'        => 'duplicate-post',
 			'version'     => '3.2.1',
 		),
-        array(
+       		array(
 			'name'        => 'Timber Library',
 			'slug'        => 'timber-library',
 			'version'     => '1.6',
 		),
-        array(
+        	array(
 			'name'        => 'WPFront User Role Editor',
 			'slug'        => 'wpfront-user-role-editor',
 			'version'     => '2.14.1',
 		),
-        array(
+        	array(
 			'name'        => 'User Switching',
 			'slug'        => 'user-switching',
 			'version'     => '1.3.0',
 		),
-
-        array(
+        	array(
 			'name'        => 'Display Posts Shortcode',
 			'slug'        => 'display-posts-shortcode',
 			'version'     => '2.9.0',
 		),
-
-        array(
+        	array(
 			'name'        => 'Redirection',
 			'slug'        => 'redirection',
 			'version'     => '3.2.0',
 		),
 
-        array(
+        	array(
 			'name'        => 'Simple Custom CSS and JS',
 			'slug'        => 'custom-css-js',
 			'version'     => '3.14.0',
